@@ -1,3 +1,5 @@
+import tailwindcss from "@tailwindcss/vite";
+
 /**
  * ☕ Chai Tapri Order System - String Basics
  *
@@ -47,20 +49,78 @@
  */
 export function getChaiOrderLength(order) {
   // Your code here
+  if (typeof order === "string") {
+    let leftOrder = order.trim();
+    if (leftOrder.length == 0) {
+      return 0;
+    }
+    return leftOrder.length;
+  } else {
+    return -1;
+  }
 }
 
 export function shoutChaiOrder(order) {
   // Your code here
+  if (typeof order === "string") {
+    let orderLeft = order.trim();
+    if (orderLeft === "") {
+      return "";
+    }
+    return orderLeft.toLocaleUpperCase();
+  } else {
+    return "";
+  }
 }
 
 export function whisperChaiOrder(order) {
   // Your code here
+  if (typeof order === "string") {
+    let orderLeft = order.trim();
+    if (orderLeft === "") {
+      return "";
+    }
+    return orderLeft.toLocaleLowerCase();
+  } else {
+    return "";
+  }
 }
 
 export function hasSpecialIngredient(order, ingredient) {
   // Your code here
+
+  if (typeof order === "string" && typeof ingredient === "string") {
+    let restOrder = order.trim();
+    let restIngr = ingredient.trim();
+    if (restOrder === "" || restIngr === "") {
+      return false;
+    }
+    const lowerString = restOrder.toLocaleLowerCase();
+    const LowerStringIng = restIngr.toLocaleLowerCase();
+    if (lowerString.includes(LowerStringIng)) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
 }
 
 export function getFirstAndLastChar(order) {
   // Your code here
+  if (typeof order === "string") {
+    let chaiOrder = order.trim();
+    if (chaiOrder === "") {
+      return null;
+    }
+    let first = chaiOrder.charAt(0);
+    let last = chaiOrder.at(-1);
+    return {
+      first: first,
+      last: last,
+    };
+  } else {
+    return null;
+  }
 }
