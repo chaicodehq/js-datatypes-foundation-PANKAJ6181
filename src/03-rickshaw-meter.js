@@ -91,16 +91,14 @@ export function calculateSurge(baseFare, surgeMultiplier) {
 
 export function findCheapestAndCostliest(...fares) {
   // Your code here
-  if (fares > 0) {
-    let minFare = Math.min(...fares);
-    let maxFare = Math.max(...fares);
-    return {
-      cheapest: minFare,
-      costliest: maxFare,
-    };
-  } else {
-    return null;
-  }
+  const valid = fares.filter((f) => typeof f === "number" && !Number.isNaN(f));
+
+  if (valid.length === 0) return null;
+
+  return {
+    cheapest: Math.min(...valid),
+    costliest: Math.max(...valid),
+  };
 }
 
 export function getDistanceDifference(from, to) {
